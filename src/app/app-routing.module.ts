@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ColorSelectorComponent } from './color-selector/color-selector.component';
+import { LoginComponent } from './access-control/login/login.component';
+import { PersonSelectorComponent } from './people/person-selector/person-selector.component';
 
 const routes: Routes = [
-  { path: '', component: ColorSelectorComponent }
+  {path: '', component: LoginComponent, pathMatch: 'full'},
+  {path: 'home', component: PersonSelectorComponent}
 ];
 
 @NgModule({

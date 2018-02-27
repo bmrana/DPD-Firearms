@@ -2,31 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { ColorSelectorComponent } from './color-selector/color-selector.component';
+import { MaterialModule } from './material/material.module';
+import { AccessControlModule } from './access-control/access-control.module';
+import { PeopleModule } from './people/people.module';
+import { GraphConnectService } from './shared/graph-connect.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColorSelectorComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatFormFieldModule,
-    MatSelectModule
-
+    MaterialModule,
+    AccessControlModule,
+    PeopleModule,
   ],
-  exports: [
-    MatFormFieldModule,
-    MatSelectModule
+  providers: [
+    GraphConnectService   
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
