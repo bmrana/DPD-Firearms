@@ -1,0 +1,7 @@
+<div class="splash" *ngIf="!graphUsers; else content">
+  <div class="centered">Loading...</div>
+</div>
+<ng-template #content>
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+</ng-template>

@@ -6,6 +6,7 @@ import { Configs } from '../access-control/configs';
 @Injectable()
 
 export class AuthService {
+
   constructor(
     private zone: NgZone,
     private router: Router
@@ -23,15 +24,15 @@ export class AuthService {
           form: false
         },
       },
-      { redirect_uri: window.location.href }
+      { redirect_uri: window.location.origin }
     );
   }
 
   login() {
-    hello('msft').login({ scope: Configs.scope }).then(
+    hello('msft').login({ scope: Configs.scope, display: 'page', force: false }).then(
       () => {
         this.zone.run(() => {
-          this.router.navigate(['home']);
+          this.router.navigate(['app']);
         });
       },
       e => console.error(e.error.message)
@@ -43,5 +44,16 @@ export class AuthService {
       () => window.location.href = '/',
       e => console.error(e.error.message)
     );
+  }
+
+  isLoggedIn() {
+    const isAuthenticated = function(session) {
+      const currentTime = (new Date()).getTime() / 1000;
+      return session && session.access_token && session.expires > currentTime;
+    };
+
+    const getSession = hello('msft').getAuthResponse();
+    
+    return isAuthenticated(getSession);
   }
 }
