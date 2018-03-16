@@ -1,8 +1,8 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/fromPromise';
-import * as MicrosoftGraph from "@microsoft/microsoft-graph-types"
-import * as MicrosoftGraphClient from "@microsoft/microsoft-graph-client"
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+import * as MicrosoftGraphClient from '@microsoft/microsoft-graph-client';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -16,13 +16,14 @@ export class PeopleService {
   graphUsers = new BehaviorSubject<MicrosoftGraph.User[]>(null);
   filteredGraphUsers: Observable<MicrosoftGraph.User[]>;
   selectedPerson: MicrosoftGraph.User;
+  dbPeople: any[];
 
   constructor(private graphConnectService: GraphConnectService) { }
 
   getClient(): MicrosoftGraphClient.Client {
-    var client = MicrosoftGraphClient.Client.init({
+    const client = MicrosoftGraphClient.Client.init({
       authProvider: (done) => {
-        done(null, this.graphConnectService.getAccessToken()); //first parameter takes an error if you can't get an access token
+        done(null, this.graphConnectService.getAccessToken()); // first parameter takes an error if you can't get an access token
       }
     });
     return client;
@@ -43,15 +44,15 @@ export class PeopleService {
     );
   }
 
-  getTestUsers(): any {
-    const users = [
-      { name: 'Rana, Brandon', value: 0 },
-      { name: 'Kidwell, Tood', value: 1 }
-    ]
-
-    return users;
-  }
   setPoliceUsers(graphUsers) {
     this.graphUsers = graphUsers;
+  }
+
+  setPeopleFromDB(people) {
+    this.dbPeople = people;
+  }
+
+  insertAddedShooter(id) {
+    this.dbPeople.push(id, this.selectedPerson.surname, this.selectedPerson.givenName, 1, this.selectedPerson.mail);
   }
 }

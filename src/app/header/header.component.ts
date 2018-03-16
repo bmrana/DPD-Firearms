@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../people/people.service';
 import { FormControl } from '@angular/forms';
-import * as MicrosoftGraph from "@microsoft/microsoft-graph-types"
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   currentTitleSubs: Subscription;
   title: string;
 
-  constructor(private peopleService: PeopleService, 
+  constructor(private peopleService: PeopleService,
               private headerService: HeaderService,
               private router: Router) { }
 
@@ -57,6 +57,17 @@ export class HeaderComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate[('app/people')];
+    this.headerService.currentView.next('shooters');
+    this.headerService.currentTitle.next('Shooters');
+  }
+
+  onBacktoShooter() {
+    if (this.currentView === 'firearm') {
+      this.headerService.currentView.next('firearms');
+    }
+
+    if (this.currentView === 'qualification') {
+      this.headerService.currentView.next('person');
+    }
   }
 }

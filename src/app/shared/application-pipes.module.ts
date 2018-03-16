@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderPipePipe } from './order-pipe.pipe';
+import { OrderPipePipe } from './pipes/order-pipe.pipe';
+import { PrettyDatePipe } from './pipes/pretty-date.pipe';
+import { FilterArrayPipe } from './pipes/filter-array.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   exports: [
-    OrderPipePipe
+    OrderPipePipe,
+    PrettyDatePipe,
+    FilterArrayPipe
   ],
   declarations: [
-    OrderPipePipe
+    OrderPipePipe,
+    PrettyDatePipe,
+    FilterArrayPipe,
   ],
   providers: [
-    OrderPipePipe
+    OrderPipePipe,
+    PrettyDatePipe,
+    FilterArrayPipe
   ]
 })
 export class ApplicationPipesModule { }

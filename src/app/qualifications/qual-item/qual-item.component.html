@@ -1,0 +1,25 @@
+<mat-card *ngIf="setVisible()">
+    <mat-card-header>
+        <mat-card-title>{{prettyDate | date:'MM/dd/yyyy'}}</mat-card-title>
+        <mat-card-subtitle [style.color]="getColor()">{{result}}</mat-card-subtitle>
+        <mat-card-subtitle>{{qual.firearmType}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="qual.image" mat-card-image [src]="getImage(qual.image)">
+    <img *ngIf="!qual.image" mat-card-image src="assets/images/imagenotavailable.png">
+    <mat-card-content>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>Score: </strong>{{qual.score}} ({{qual.hits}}/{{qual.shots}})
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p><strong>Firearm: </strong>{{qual.manufacturer}} {{qual.modelName}} - {{qual.serial}} ({{qual.caliber}})</p>
+            <p><strong>Sighting Device: </strong>{{qual.sightingDevice}}</p>
+            <hr>
+            <p><strong>Time: </strong>{{qual.daynight}}</p>
+            <p><strong>Instructor: </strong>{{qual.instructor}}</p>
+            <hr *ngIf="qual.remarks">
+            <div class="mat-caption">{{qual.remarks}}</div>
+        </mat-expansion-panel>
+    </mat-card-content>
+</mat-card>

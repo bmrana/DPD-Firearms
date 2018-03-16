@@ -1,0 +1,8 @@
+.card-container {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  * {
+    box-sizing: border-box;
+}

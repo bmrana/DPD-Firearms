@@ -1,0 +1,74 @@
+<mat-card>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-card-title>Add a Firearm</mat-card-title>
+    <mat-card-subtitle>{{user.displayName}}</mat-card-subtitle>
+    <mat-divider style="margin-bottom: 10px;"></mat-divider>
+    <mat-card-content>
+      <div class="form-container">
+        <mat-form-field>
+          <mat-select 
+            placeholder="Firearm type"
+            name="firearmType"
+            ngModel>
+            <mat-option *ngFor="let type of types" [value]="type.lookupID">
+              {{type.lookupValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select 
+            placeholder="Manufacturer" 
+            (change)="onSelectionChange($event)" 
+            id="Manufacturer"
+            name="manufacturer"
+            [(ngModel)]="selectedManufacturer">
+            <mat-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer">
+              {{manufacturer.lookupValue}}
+            </mat-option>
+            <mat-option [value]="-99">Add New...</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select 
+            placeholder="Model" 
+            [disabled]="!selectedManufacturer || selectedManufacturer == -99"
+            (change)="onSelectionChange($event)" 
+            id="Model"
+            name="model"
+            [(ngModel)]="selectedModel" >
+            <mat-option *ngFor="let model of models | filterArray: 'manufacturerValue': selectedManufacturer : selectedModel" [value]="model">
+              {{model.lookupValue}}
+            </mat-option>
+            <mat-option [value]="-99">Add New...</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select 
+            placeholder="Caliber" 
+            id="Caliber" 
+            (change)="onSelectionChange($event)"
+            name="caliber"
+            [(ngModel)]="selectedCaliber" >
+            <mat-option *ngFor="let caliber of calibers" [value]="caliber">
+              {{caliber.lookupValue}}
+            </mat-option>
+            <mat-option [value]="-99">Add New...</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput 
+            placeholder="Serial #"
+            name="serial"
+            ngModel>
+        </mat-form-field>
+        <mat-checkbox
+          name="primary"
+          ngModel>Primary?</mat-checkbox>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="button">Cancel</button>
+      <button mat-button type="submit">Add</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class HeaderService {
   currentView = new BehaviorSubject<string>('shooters');
   currentTitle = new BehaviorSubject<string>('Shooters');
-  
+
   constructor() { }
 
 }

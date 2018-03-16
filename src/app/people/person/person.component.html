@@ -1,1 +1,15 @@
-{{selectedPerson.givenName}} {{ selectedPerson.surname }}
+<mat-tab-group (selectedTabChange)="onTabChanged($event)" [(selectedIndex)]="selectedTabIndex">
+    <mat-tab label="Qualifications">
+        <app-firearm-type-filter (notify)="onFilter($event)"></app-firearm-type-filter>
+        <div class="card-container">
+            <app-qual-item *ngFor="let qual of quals" [qual]="qual" [type]="type"></app-qual-item>
+        </div>
+    </mat-tab>
+    <mat-tab label="Firearms">
+        <app-firearm-type-filter (notify)="onFilter($event)"></app-firearm-type-filter>
+        <mat-selection-list #userFirearms>
+            <app-firearm-item *ngFor="let firearm of firearms" [firearm]="firearm" [type]="type"></app-firearm-item>
+        </mat-selection-list>
+    </mat-tab>
+</mat-tab-group>
+<app-action-button [index]="selectedTabIndex"></app-action-button>

@@ -1,0 +1,8 @@
+<mat-list-option *ngIf="setVisible()">
+  <h3 matLine>{{firearm.manufacturer}} {{firearm.modelName}}</h3>
+  <p matLine>
+    <span>{{firearm.serial}}</span>
+    <span class="mat-caption">({{firearm.caliber}})</span>
+  </p>
+</mat-list-option>
+<mat-divider></mat-divider>

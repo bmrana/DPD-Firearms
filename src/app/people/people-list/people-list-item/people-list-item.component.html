@@ -1,4 +1,4 @@
-<mat-list-item (click)="onPersonSelected(graphUser)">
+<mat-list-item *ngIf="graphUser.mail" (click)="onPersonSelected(graphUser)" style="cursor: pointer;">
   {{graphUser.displayName}}
 </mat-list-item>
 <mat-divider></mat-divider>

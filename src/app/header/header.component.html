@@ -14,10 +14,24 @@
     <input matInput placeholder="Search" [formControl]="searchBox">
   </mat-form-field>
 </mat-toolbar>
-<mat-toolbar color="primary" *ngIf="currentView === 'shooter'">
-  <button mat-icon-button (click)="onBack()">
-      <mat-icon class="icon">arrow_back</mat-icon>
+<mat-toolbar color="primary" *ngIf="currentView === 'person' || currentView === 'firearms'">
+  <button mat-icon-button (click)="onBack()" style="z-index: 25">
+    <mat-icon class="icon">arrow_back</mat-icon>
   </button>
-  <span style="padding: 0 14px; text-align: center;">{{title}}</span>
+  <span class="title-centered">{{title}}</span>
   <span class="spacer"></span>
 </mat-toolbar>
+<mat-toolbar color="primary" *ngIf="currentView === 'firearm'">
+  <button mat-icon-button (click)="onBacktoShooter()" style="z-index: 25">
+    <mat-icon class="icon">arrow_back</mat-icon>
+  </button>
+  <span class="title-centered">{{title}}</span>
+  <span class="spacer"></span>
+</mat-toolbar>
+<mat-toolbar color="primary" *ngIf="currentView === 'qualification'">
+    <button mat-icon-button (click)="onBacktoShooter()" style="z-index: 25">
+      <mat-icon class="icon">arrow_back</mat-icon>
+    </button>
+    <span class="title-centered">{{title}}</span>
+    <span class="spacer"></span>
+  </mat-toolbar>

@@ -53,7 +53,7 @@ export class AuthService {
     };
 
     const getSession = hello('msft').getAuthResponse();
-    
+
     return isAuthenticated(getSession);
   }
 }

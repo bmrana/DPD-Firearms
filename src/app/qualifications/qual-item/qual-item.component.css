@@ -1,0 +1,21 @@
+@media (min-width: 650px) {
+  mat-card {width: 560px;}
+}
+
+mat-card {
+  box-sizing: border-box;
+  margin: 16px;
+}
+
+.details-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.pass {
+  color: green;
+}
+
+.fail {
+  color: red;
+}

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { PeopleService } from '../people.service';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
-import { OrderPipePipe } from '../../shared/order-pipe.pipe';
+import { OrderPipePipe } from '../../shared/pipes/order-pipe.pipe';
 
 @Component({
   selector: 'app-people-list',
@@ -17,15 +17,12 @@ export class PeopleListComponent implements OnInit, OnDestroy {
   constructor(private peopleService: PeopleService, private orderPipe: OrderPipePipe) { }
 
   ngOnInit() {
-    
     this.filteredGraphUsersSubs = this.peopleService.filteredGraphUsers
       .subscribe(
         (users) => {
-          this.userList = this.orderPipe.transform(users, 'surname');
+          this.userList = this.orderPipe.transform(users, 'surname', false);
         }
       );
-
-      console.log(this.userList);
   }
 
   ngOnDestroy() {

@@ -1,6 +1,12 @@
+import { DbPeopleResolverService } from './dbpeople-resolver.service';
+import { FirearmsModule } from './../firearms/firearms.module';
+import { ActionButtonComponent } from './../shared/action-button/action-button.component';
+import { FirearmTypeFilterComponent } from './person/firearm-type-filter/firearm-type-filter.component';
+import { QualificationsModule } from './../qualifications/qualifications.module';
+import { PersonResolverService } from './person/person-resolver.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material/material.module';
 import { PeopleService } from './people.service';
@@ -15,7 +21,10 @@ import { PersonComponent } from './person/person.component';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    ApplicationPipesModule
+    FormsModule,
+    ApplicationPipesModule,
+    QualificationsModule,
+    FirearmsModule
   ],
   exports: [
     PeopleListComponent,
@@ -24,10 +33,14 @@ import { PersonComponent } from './person/person.component';
     PeopleListComponent,
     PeopleListItemComponent,
     PersonComponent,
+    FirearmTypeFilterComponent,
+    ActionButtonComponent
   ],
   providers: [
     PeopleService,
     PersonSelectorResolveService,
+    PersonResolverService,
+    DbPeopleResolverService
   ]
 })
 export class PeopleModule { }

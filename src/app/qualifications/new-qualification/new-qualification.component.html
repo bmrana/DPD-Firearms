@@ -1,0 +1,68 @@
+<mat-card>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-card-title>Add a Qualification</mat-card-title>
+    <mat-card-subtitle>{{user.displayName}}</mat-card-subtitle>
+    <mat-divider style="margin-bottom: 10px;"></mat-divider>
+    <mat-card-content>
+      <div class="form-container">
+        <!-- <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" id="qual_date" name="qual_date" [(ngModel)]="qualDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker touchUi="true"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Score" id="score" name="score" [(ngModel)]="score">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Hits" id="hits" name="hits" [(ngModel)]="hits">
+        </mat-form-field> -->
+        <!-- <mat-form-field>
+          <mat-select
+            placeholder="Firearm"
+            id="firearm"
+            name="firearm"
+            [(ngModel)]="firearm">
+            <mat-option *ngFor="let firearm of firearms" [value]="firearm">
+              {{firearm.manufacturer}} {{firearm.modelName}} - {{firearm.serial}} ({{firearm.firearmType}})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select
+            placeholder="Primary sighting device"
+            id="sightingDevice"
+            name="sightingDevice"
+            [(ngModel)]="sightingDevice">
+            <mat-option *ngFor="let sightingDevice of sightingDevices" [value]="sightingDevice">
+              {{sightingDevice.lookupValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select
+            placeholder="Day/Night"
+            id="daynight"
+            name="daynight"
+            [(ngModel)]="daynight">
+            <mat-option value="Day">Day</mat-option>
+            <mat-option value="Night">Night</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select
+            placeholder="Instructor"
+            id="instructor"
+            name="instructor"
+            [(ngModel)]="instructor">
+            <mat-option *ngFor="let instructor of instructors" [value]="instructor">
+              {{instructor.displayName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        
+          <input type="file" accept="image/*" id="cameraInput" name="cameraInput" (change)="onPhotoGrabbed($event)">
+          <img [src]="imageUrl">
+      </div>
+    </mat-card-content>
+  </form>
+</mat-card>

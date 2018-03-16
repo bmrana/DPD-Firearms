@@ -1,0 +1,19 @@
+<div class="button-group-container">
+    <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="selected" (change)="onToggleSelected()">
+        <mat-button-toggle value="all" class="mat-caption">
+            All
+        </mat-button-toggle>
+        <mat-button-toggle value="duty" class="mat-caption">
+            Duty
+        </mat-button-toggle>
+        <mat-button-toggle value="secondary" class="mat-caption">
+            Secondary
+        </mat-button-toggle>
+        <mat-button-toggle value="rifle" class="mat-caption">
+            Rifle
+        </mat-button-toggle>
+        <mat-button-toggle value="precision" class="mat-caption">
+            Precision
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
