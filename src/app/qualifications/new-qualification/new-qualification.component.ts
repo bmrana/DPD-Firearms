@@ -40,9 +40,9 @@ export class NewQualificationComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
 
-      reader.onload = (event: any) => {
+      reader.onload = (e: any) => {
         this.imageUrl = event.target.result;
-      }
+      };
 
       reader.readAsDataURL(event.target.files[0]);
     }
