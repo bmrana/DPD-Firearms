@@ -9,3 +9,7 @@ mat-card {
 .form-container > * {
     width: 100%;
 }
+
+input[type="file"] {
+    display: none;
+}

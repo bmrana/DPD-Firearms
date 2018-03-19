@@ -13,7 +13,6 @@ export class ActionButtonComponent implements OnInit {
   constructor(private router: Router, private headerService: HeaderService) { }
 
   ngOnInit() {
-    console.log(this.index);
   }
 
   onClick() {

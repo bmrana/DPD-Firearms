@@ -5,7 +5,7 @@
     <mat-divider style="margin-bottom: 10px;"></mat-divider>
     <mat-card-content>
       <div class="form-container">
-        <!-- <mat-form-field>
+        <mat-form-field>
           <input matInput [matDatepicker]="picker" placeholder="Choose a date" id="qual_date" name="qual_date" [(ngModel)]="qualDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker touchUi="true"></mat-datepicker>
@@ -15,8 +15,8 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Hits" id="hits" name="hits" [(ngModel)]="hits">
-        </mat-form-field> -->
-        <!-- <mat-form-field>
+        </mat-form-field>
+        <mat-form-field>
           <mat-select
             placeholder="Firearm"
             id="firearm"
@@ -58,10 +58,12 @@
               {{instructor.displayName}}
             </mat-option>
           </mat-select>
-        </mat-form-field> -->
-        
+        </mat-form-field>
+        <label for="cameraInput">
+          <i class="material-icons md-48">photo_camera</i>
+        </label>
           <input type="file" accept="image/*" id="cameraInput" name="cameraInput" (change)="onPhotoGrabbed($event)">
-          <img [src]="imageUrl">
+          <img *ngIf="imageUrl" [src]="imageUrl" style="width: 50%; height: 50%;">
       </div>
     </mat-card-content>
   </form>

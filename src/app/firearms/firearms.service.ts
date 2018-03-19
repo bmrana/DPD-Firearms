@@ -18,5 +18,6 @@ export class FirearmsService {
 
   setLookupValues(values) {
     this.lookupValues = values;
+    console.log(this.lookupValues);
   }
 }
